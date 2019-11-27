@@ -1,29 +1,5 @@
 const mongoose = require('mongoose');
 
-/**
- * @swagger
- *  components:
- *    schemas:
- *      shoppingItem:
- *        type: object
- *        required:
- *          - itemName
- *          - itemQuantity
- *          - itemBought
- *        properties:
- *          itemName:
- *            type: string
- *          itemQuantity:
- *            type: number
- *            description: Number of fruits.
- *          itemBought:
- *            type: boolean
- *        example:
- *           itemName: Apples
- *           itemQuantity: 5
- *           itemBought: false
- */
-
 const shoppingItemSchema = mongoose.Schema({
     itemName: {
         type: String,
