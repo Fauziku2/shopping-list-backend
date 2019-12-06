@@ -17,9 +17,8 @@ router.get('/items', (req, res, next) => {
     Item.find((err, items) => {
         if (err) {
             res.json(err)
-        } else {
-            res.json(items)
         }
+        res.json(items)
     })
 });
 
@@ -33,10 +32,18 @@ router.post('/item', (req, res, next) => {
     newShoppingItem.save((err, item) => {
         if (err) {
             res.json(err)
-        } else {
-            res.json({msg: 'Item has been added to db'});
         }
+        res.json({msg: 'Item has been added to db'});
     });
+});
+
+router.get('/item/:id', (req, res, next) => {
+    Item.findById(req.params.id, (err, result) => {
+        if (err) {
+            res.json(err)
+        }
+        res.json(result)
+    })
 });
 
 router.put('/item/:id', (req, res, next) => {
@@ -50,9 +57,8 @@ router.put('/item/:id', (req, res, next) => {
         (err, result) => {
             if (err) {
                 res.json(err)
-            } else {
-                res.json(result)
             }
+            res.json(result)
         }
     )
 });
@@ -61,9 +67,8 @@ router.delete('/item/:id', (req, res, next) => {
     Item.deleteOne({_id: req.params.id}, (err, result) => {
         if (err) {
             res.json(err)
-        } else {
-            res.json(result)
         }
+        res.json(result)
     })
 });
 

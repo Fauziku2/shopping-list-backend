@@ -1,6 +1,7 @@
 let express = require('express');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
+let logger = require('morgan');
 let cors = require('cors');
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -48,6 +49,8 @@ const PORT = 3000;
 app.use(cors());
 
 app.use(bodyParser.json());
+
+app.use(logger('dev'));
 
 app.use('/api', route);
 
